@@ -1,44 +1,48 @@
-### This repository is no longer maintained!
+# DevOps Task 1 - CI/CD Pipeline with GitHub Actions
 
-**For the most up to date test app to get you started on Heroku, head on over to [`node-js-getting-started`](https://github.com/heroku/node-js-getting-started).**
+## 🚀 Objective
+This project demonstrates automating the deployment of a Node.js web application using a CI/CD pipeline powered by **GitHub Actions** and **Docker**. The final Docker image is pushed to **DockerHub** automatically on every push to the `main` branch.
 
 ---
 
-# node-js-sample
+## 🔧 Tech Stack
+- Node.js
+- GitHub Actions
+- Docker
+- DockerHub
 
-A barebones Node.js app using [Express 4](http://expressjs.com/).
+---
 
-## Running Locally
 
-Make sure you have [Node.js](http://nodejs.org/) and the [Heroku Toolbelt](https://toolbelt.heroku.com/) installed.
+---
 
-```sh
-git clone git@github.com:heroku/node-js-sample.git # or clone your own fork
-cd node-js-sample
-npm install
-npm start
-```
+## ⚙️ CI/CD Workflow Summary
 
-Your app should now be running on [localhost:5000](http://localhost:5000/).
+### Trigger
+- Runs automatically on every push to the `main` branch.
 
-## Deploying to Heroku
+### Steps
+1. **Checkout Code** – Clones the repository.
+2. **Setup Node.js** – Installs the specified version.
+3. **Install Dependencies** – Runs `npm install`.
+4. **Run Tests** – Executes `npm test`.
+5. **Build Docker Image** – Builds the Docker image using `Dockerfile`.
+6. **Login to DockerHub** – Uses GitHub Secrets for authentication.
+7. **Push Docker Image** – Pushes the image to DockerHub.
 
-```
-heroku create
-git push heroku master
-heroku open
-```
+---
 
-Alternatively, you can deploy your own copy of the app using the web-based flow:
+## 🐳 Docker
 
-[![Deploy to Heroku](https://www.herokucdn.com/deploy/button.png)](https://heroku.com/deploy)
+### Dockerfile
+A simple Dockerfile is included to containerize the Node.js app:
 
-## Documentation
+```dockerfile
+FROM node:16
+WORKDIR /app
+COPY . .
+RUN npm install
+EXPOSE 3000
+CMD ["npm", "start"]
 
-For more information about using Node.js on Heroku, see these Dev Center articles:
 
-- [10 Habits of a Happy Node Hacker](https://blog.heroku.com/archives/2014/3/11/node-habits)
-- [Getting Started with Node.js on Heroku](https://devcenter.heroku.com/articles/getting-started-with-nodejs)
-- [Heroku Node.js Support](https://devcenter.heroku.com/articles/nodejs-support)
-- [Node.js on Heroku](https://devcenter.heroku.com/categories/nodejs)
-- [Using WebSockets on Heroku with Node.js](https://devcenter.heroku.com/articles/node-websockets)
