@@ -2,7 +2,7 @@ name: Node.js CI/CD Pipeline
 
 on:
   push:
-    branches: [ "master" ]  # Change to match your actual branch name
+    branches: [ "master" ]  # or "main" if that's your actual branch
 
 jobs:
   build-and-deploy:
@@ -29,7 +29,7 @@ jobs:
           fi
 
       - name: Build Docker Image
-        run: docker build -t ${{ secrets.DOCKER_USERNAME }}/ci-cd-nodejs-app .
+        run: docker build -t bhargavbtk/devops_task1 .
 
       - name: Login to DockerHub
         env:
@@ -38,4 +38,4 @@ jobs:
         run: echo "$DOCKER_PASSWORD" | docker login -u "$DOCKER_USERNAME" --password-stdin
 
       - name: Push Docker Image
-        run: docker push ${{ secrets.DOCKER_USERNAME }}/ci-cd-nodejs-app
+        run: docker push bhargavbtk/devops_task1
