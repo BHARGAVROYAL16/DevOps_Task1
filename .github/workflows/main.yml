@@ -33,5 +33,5 @@ jobs:
         run: docker push ${{ secrets.DOCKER_USERNAME }}/ci-cd-nodejs-app
 on:
   push:
-    branches: [ "main" ]
+    branches: [ "master" ]
   workflow_dispatch:
