@@ -9,7 +9,7 @@ This project demonstrates automating the deployment of a Node.js web application
 - Node.js
 - GitHub Actions
 - Docker
-- DockerHub
+- DockerHub   
 
 ---
 
